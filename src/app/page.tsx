@@ -23,6 +23,8 @@ import {
 import { cn } from '~/lib/utils';
 import { formatCurrency } from '~/utils/currency';
 import { getTransactions } from '~/services/transactions';
+import { CreateTransactionModal } from '~/components/modal';
+import { Dialog, DialogTrigger } from '~/components/ui/dialog';
 
 import type { TTransaction } from '~/services/transactions';
 
@@ -56,7 +58,12 @@ export default async function Home() {
           <h1 className="text-2xl font-bold">Simple Finance</h1>
         </div>
 
-        <Button>Nova Transação</Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button>Nova Transação</Button>
+          </DialogTrigger>
+          <CreateTransactionModal />
+        </Dialog>
       </header>
 
       <section className="flex w-full items-center justify-center gap-10">
