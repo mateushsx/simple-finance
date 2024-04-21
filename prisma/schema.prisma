@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Transaction {
-  id          Int      @id
+  id          BigInt   @id
   createdAt   DateTime @default(now())
   type        String
   date        DateTime
