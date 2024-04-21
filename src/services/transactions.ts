@@ -10,7 +10,7 @@ export type TTransaction = {
   id: number;
 } & TTransactionDTO;
 
-const BASE_URL = process.env.NEXT_API_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
 
 export const getTransactions = async (): Promise<{
   transactions: TTransaction[];
@@ -19,4 +19,14 @@ export const getTransactions = async (): Promise<{
   const transactions = await response.json();
 
   return transactions;
+};
+
+export const createTransaction = async (transaction: TTransactionDTO) => {
+  await fetch(`${BASE_URL}/api/transactions/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(transaction),
+  });
 };
